@@ -38,3 +38,6 @@ public class Ex01Controller {
 	}
 	
 }
+//Spring은 **HttpMessageConverter**라는 내부 기능을 통해,
+//String → text/html 또는 text/plain
+//Map, Object → JSON (Jackson 이용)로 자동 변환해줍니다.
