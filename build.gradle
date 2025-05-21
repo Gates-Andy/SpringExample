@@ -36,6 +36,8 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3' // 쿼리 수행 로그 세팅 mybatis
+	
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0' 
 }
 
 tasks.named('test') {
