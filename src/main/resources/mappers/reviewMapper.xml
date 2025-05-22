@@ -4,6 +4,7 @@
 
 <mapper
 	namespace="com.andy.spring.ex.mybatis.repository.ReviewRepository">
+
 	<select id="selectReview" parameterType="int"
 		resultType="com.andy.spring.ex.mybatis.domain.Review">
 		SELECT
@@ -20,4 +21,41 @@
 		WHERE
 		`id` = #{id}
 	</select>
+
+	<select id="insertReview" parameterType="map">
+		Insert INTO
+		`new_review`
+		(`storeId`,`menu`,`userName`,`point`,`review`)
+		VALUE
+		(
+		#{storeId}
+		,#{menu}
+		,#{userName}
+		,#{point}
+		,#{review}
+		)
+	</select>
+
+	<insert id="insertReviewByObject"
+		parameterType="com.andy.spring.ex.mybatis.domain.Review">
+
+		Insert INTO
+		`new_review`
+		(
+		`storeId`
+		,`menu`
+		,`userName`
+		,`point`
+		,`review`
+		)
+		VALUE
+		(
+		#{storeId}
+		,#{menu}
+		,#{userName}
+		,#{point}
+		,#{review}
+		)
+	</insert>
+
 </mapper>

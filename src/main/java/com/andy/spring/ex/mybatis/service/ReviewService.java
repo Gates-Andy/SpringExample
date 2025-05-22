@@ -18,5 +18,21 @@ public class ReviewService {
 		Review review = reviewRepository.selectReview(id);
 
 		return review;
+
+	}
+
+	// sellerId, menu, userName, point, review 저장 기능
+	public int addReview(int storeId, String menu, String userName, double point, String review) {
+
+		int count = reviewRepository.insertReview(storeId, menu, userName, point, review);
+
+		return count;
+
+	}
+	
+	// Review 객체를 통해 리부 정보를 저장하는 기능
+	public int addReviewByObject(Review review) {
+		int count = reviewRepository.insertReviewByObject(review);
+		return count;
 	}
 }
