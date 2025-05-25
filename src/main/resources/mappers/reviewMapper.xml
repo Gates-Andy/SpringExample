@@ -21,7 +21,14 @@
 		WHERE
 		`id` = #{id}
 	</select>
-
+	
+<!-- 
+@Param("id") 어노테이션이 메서드 파라미터 id를 XML 쿼리 내 #{id} 변수와 매핑해줍니다.
+parameterType="int"는 전달되는 파라미터 타입이 int임을 명시.
+resultType="com.andy.spring.ex.mybatis.domain.Review"는 쿼리 결과를 Review 클래스 객체로 매핑해서 반환한다는 의미입니다.
+즉, 인터페이스 메서드와 XML 쿼리가 연결돼서 MyBatis가 자동으로 쿼리 실행, 결과 매핑, 반환까지 처리해주는 구조입니다.
+ -->
+ 
 	<select id="insertReview" parameterType="map">
 		Insert INTO
 		`new_review`

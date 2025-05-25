@@ -11,7 +11,7 @@ import com.andy.spring.ex.database.repository.UsedGoodsRepository;
 @Service // 로직(busisness) 담당 (데이터 가공 햄버거 조립) 그 외 복잡한 기능 수행 코드가 제일 더러움
 public class UsedGoodsService {
 	
-	// 의존성 주입 - DI 객체 생성을 Spring Framework 에서 직접 관리
+	// 의존성 주입 - DI 객체 생성을 Spring Framework 에서 직접 관리(주입) 개발자가 new 안해줘도됨
 	@Autowired
 	private UsedGoodsRepository usedGoodsRepository;
 	
@@ -24,4 +24,6 @@ public class UsedGoodsService {
 		return usedGoodsList;
 		
 	}
+	
 }
+

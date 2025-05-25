@@ -29,10 +29,14 @@ public class ReviewService {
 		return count;
 
 	}
-	
+
 	// Review 객체를 통해 리부 정보를 저장하는 기능
 	public int addReviewByObject(Review review) {
+
 		int count = reviewRepository.insertReviewByObject(review);
+
 		return count;
+
 	}
+
 }

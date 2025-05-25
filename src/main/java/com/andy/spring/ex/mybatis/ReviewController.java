@@ -20,6 +20,7 @@ public class ReviewController {
 	@RequestMapping("/1")
 	public Review review(@RequestParam("id")int id) {
 		
+		// 요청 URL에서 id라는 파라미터 값을 자동으로 찾아 int id를 넣어준다. spring에서
 		// 전달 받은 id와 일치하는 리뷰정보를 얻어오려면
 		Review review = reviewService.getReview(id);
 		
@@ -31,6 +32,7 @@ public class ReviewController {
 	@ResponseBody
 	@RequestMapping("/create")
 	public String createReview() {
+		
 // 		4, 치즈피자, 김인규, 4.5, 치즈피자 존맛!
 //		int count = reviewService.addReview(4, "치즈피자", "김인규", 4.5, "치즈피자 존맛!");
 //		return "실행 결과 : 1" + count;
@@ -45,7 +47,7 @@ public class ReviewController {
 		int count = reviewService.addReviewByObject(review);
 		
 		return "실행 결과 :" + count;
+		
 	}
-	
 	
 }
