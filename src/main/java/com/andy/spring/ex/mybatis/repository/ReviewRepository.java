@@ -13,7 +13,7 @@ public interface ReviewRepository {
 
 	// sellerId, menu, userName, point, review 저장 기능
 	public int insertReview(
-    		@Param("storeId") int selstoreIdlerId
+    		@Param("storeId") int storeId
     		, @Param("menu") String menu
     		, @Param("userName") String userName
     		, @Param("point") double point
