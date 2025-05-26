@@ -9,4 +9,5 @@ public interface UserRepository {
 	
 	public User selectLastUser();
 	
+	public int insertUser(User user); 
 }
