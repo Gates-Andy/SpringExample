@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf 반복문</title>
+</head>
+<body>
+    <h1>Thymeleaf 반복문</h1>
+
+    <h3>1. 숫자 반복</h3>
+    <!-- 0 1 2 3 4 5 -->
+    <div th:each="i : ${#numbers.sequence(0,5)}" th:text="${i}"></div>
+
+    <h3>2. 문자열 반복</h3>
+    <div th:each="fruit : ${fruitList}">
+        <span th:text="${fruit}"></span>
+    </div>
+</body>
+</html>

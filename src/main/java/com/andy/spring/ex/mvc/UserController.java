@@ -1,7 +1,5 @@
 package com.andy.spring.ex.mvc;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +35,8 @@ public class UserController {
 			@RequestParam("name") String name
 			, @RequestParam("birthday") String birthday
 			, @RequestParam("email") String email
-			, @RequestParam(value="introduce", required=false) String introduce) {
+			, @RequestParam(value="introduce", required=false) String introduce
+			,Model model) {
 		
 		User user = new User();
 		user.setName(name);
@@ -47,8 +46,8 @@ public class UserController {
 		
 		int count = userService.addUser(user);
 		
-		model.addattribute("title","가장 최근 등록 사용자");
-		model.addattribute("result",user);
+		model.addAttribute("title","가장 최근 등록 사용자");
+		model.addAttribute("result",user);
 		
 		return "redirect:/mvc/user/userinfo";
 		
