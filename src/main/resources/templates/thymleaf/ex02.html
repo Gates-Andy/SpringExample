@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Thymeleaf 반복문</title>
+<meta charset="UTF-8">
+<title>Thymeleaf 반복문</title>
 </head>
 <body>
-    <h1>Thymeleaf 반복문</h1>
+	<h1>Thymeleaf 반복문</h1>
 
-    <h3>1. 숫자 반복</h3>
-    <!-- 0 1 2 3 4 5 -->
-    <div th:each="i : ${#numbers.sequence(0,5)}" th:text="${i}"></div>
+	<h3>1. 숫자 반복</h3>
+	<!-- 0 1 2 3 4 5 -->
+	<div th:each="i : ${#numbers.sequence(0,5)}" th:text="${i}"></div>
+	<!-- 객체 -->
 
-    <h3>2. 문자열 반복</h3>
-    <div th:each="fruit : ${fruitList}">
-        <span th:text="${fruit}"></span>
-    </div>
+	<h3>2. 문자열 반복</h3>
+	<div th:each="fruit, status: ${fruitList}">
+		<span th:text="${fruit}"></span> 
+		<span th:text="${status.index}"></span>
+		<span th:text="|${status.index}, ${status.count}|"></span>
+	</div>
+
+	<h3>3. 맵리스트</h3>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+				<th>취미</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user:${userList}">
+				<td th:text="${user.name}">신윤식</td>
+				<td th:text="${user.age}">30</td>
+				<td th:text="${user.hobby}">기타연주</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
