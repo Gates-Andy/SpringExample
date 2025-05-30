@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax연습</title>
+</head>
+<body>
+	<h1>ajax 연습</h1>
+	
+
+	<label>이름</label>
+	<input type="text" id="nameInput">
+	<label>생년월일</label>
+	<input type="text" id="birthdayInput">
+	<button type="button" id="inputBtn">입력</button>
+	
+	<div>이름 : <span id="nameSpan"></span></div>
+	<div>나이 : <span id="ageSpan"></span></div>
+	
+	<!-- jquery cdn -->
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<script>
+		$("#inputBtn").on("click",function(){
+			let name = $("#nameInput").val();
+			let birthday  = $("#birthdayInput").val();
+			
+			//alert("이름 : " + name + "생년월일 :" + birthday);
+			$.ajax({
+				type:"get"
+				, url:"/ajax/person"
+				, data:{"name":name, "birthday":birthday}
+				, success:function(response) {
+					// 응답이 제대로 되었을때 수행할 기능 
+					// 해당 함수의 파라미터를 통해 response body에 담긴 데이터가 전달 받는다.
+					// {"name":"김인슈","age":"32"} json문자열로 응답으로 전달받는건데...
+					// response body 에 담긴 json 문자열을 javascript에서 손쉽게 사용하도록
+					// json문자열을 javascript 객체로 변환해준다. ***
+					
+					//alert(response.name + " " + response.age);
+					
+					$("#nameSpan").text(response.name); 
+					$("#ageSpan").text(response.age);   
+				}
+			})
+		});
+	</script>
+	
+</body>
+</html>
