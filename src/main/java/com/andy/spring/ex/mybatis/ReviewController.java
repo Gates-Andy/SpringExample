@@ -2,6 +2,7 @@ package com.andy.spring.ex.mybatis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,20 +16,35 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	// id가 5인 리뷰 정보를 response에 json으로 담는다
+	//1 id가 5인 리뷰 정보를 response에 json으로 담는다. 특수 목적
 	@ResponseBody
 	@RequestMapping("/1")
 	public Review review(@RequestParam("id")int id) {
 		
-		// 요청 URL에서 id라는 파라미터 값을 자동으로 찾아 int id를 넣어준다. spring에서
-		// 전달 받은 id와 일치하는 리뷰정보를 얻어오려면
+// 요청 URL에서 id라는 파라미터 값을 자동으로 찾아 int id를 넣어준다. spring에서 전달 받은 id와 일치하는 리뷰정보를 얻어오려면
+
 		Review review = reviewService.getReview(id);
 		
 		return review;
 		
 	}
 	
-	// 리뷰를 저장하는 기능
+	//2.
+	@ResponseBody
+	@PostMapping("/insert")
+	public String insertReview(@RequestParam("storeId") int storeId,
+	                           @RequestParam("menu") String menu,
+	                           @RequestParam("userName") String userName,
+	                           @RequestParam("point") double point,
+	                           @RequestParam("review") String review) {
+		
+	    int count = reviewService.addReview(storeId, menu, userName, point, review);
+	    
+	    return "삽입된 행 수: " + count;
+	    
+	}
+	
+	//3. 리뷰를 저장하는 기능
 	@ResponseBody
 	@RequestMapping("/create")
 	public String createReview() {

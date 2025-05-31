@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController // @Controller + @ResponseBody
-@RequestMapping("/lifecycle/ex01")
+@RequestMapping("/lifecycle/ex01") //클래스 레벨
 public class Ex01RestController {
 	
 	//1. 직접 만든 클래스의 객체를 response에 담는 페이지
 	
-	@RequestMapping("/3")
+	@RequestMapping("/3") // 메서드 레벨
 	public Person personResponse() {
 		
 		Person me = new Person("신윤식", 32);
@@ -29,7 +29,7 @@ public class Ex01RestController {
 		
 		Person me = new Person("신윤식", 32);
 		
-		//Spring에서 응답 전체를 직접 제어할 수 있게 해주는 클래스
+		//Spring에서 응답 전체를 직접 제어할 수 있게 해주는 ResponseEntity 클래스 객체 me 와 상태코드를 지정
 		ResponseEntity<Person> entity = new ResponseEntity<>(me, HttpStatus.INTERNAL_SERVER_ERROR);
 		
 		return entity;

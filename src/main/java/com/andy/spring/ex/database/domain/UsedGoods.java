@@ -2,10 +2,10 @@ package com.andy.spring.ex.database.domain;
 
 import java.time.LocalDateTime;
 
-//특정 테이블의 한행의 모든 정보를 저장하기 위한 클래스 정의
-//Entity, Domain
+
+
 public class UsedGoods {
-	// #4 entitiy class
+	// #4 Entity, Domain 클래스 class 특정 테이블의 한행의 모든 정보를 저장하기 위한 클래스 정의
 
 	private int id;
 	private int sellerId;

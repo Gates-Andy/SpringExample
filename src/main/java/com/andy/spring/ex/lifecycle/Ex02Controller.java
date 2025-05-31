@@ -8,9 +8,10 @@ public class Ex02Controller {
 
 	@RequestMapping("/lifecycle/ex02")
 	public String thymleafResponse() {
-		// html 파일 경로를 리턴
-		// 항상 통일된경로이기 때문에 src/main/resources/templates 는 생략되어있음
-		// .html 도 생략되어 있음
-		return "lifecycle/ex02";
+
+		return "lifecycle/ex02"; 
+		// html 파일 경로를 리턴 - 항상 통일된경로이기 때문에 src/main/resources/templates 그리고 .html는 생략되어있음
+		
 	}
+	
 }

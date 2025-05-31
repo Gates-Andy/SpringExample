@@ -4,12 +4,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 특정 Repository interface와 연결 설정 -->
-<mapper
-	namespace="com.andy.spring.ex.database.repository.UsedGoodsRepository">
+<!-- <mapper>는 이 XML이 어떤 **인터페이스(@Mapper)**와 연결되는지 지정합니다. -->
+<mapper namespace="com.andy.spring.ex.database.repository.UsedGoodsRepository">
 	<!-- 연결된 Repository의 특정 메소드에 대한 구현 (query) -->
 	<select id="selectUsedGoodsList"
 		resultType="com.andy.spring.ex.database.domain.UsedGoods">
+		<!-- id: 이 쿼리와 연결되는 Repository 인터페이스의 메소드 이름. -->
+		<!-- resultType: SQL 쿼리의 결과를 매핑할 도메인 클래스의 경로. 한 행을 UsedGoods 객체로 자동 변환. -->
 		SELECT
 		`id`
 		,`sellerId`
@@ -22,23 +23,6 @@
 		FROM
 		`used_goods`
 	</select>
-
-	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id"
-		parameterType="com.andy.spring.ex.mvc.domain.User">
-		INSERT INTO
-		`new_user`
-		(
-			`name`
-			,`yyyymmdd`
-			,`email`
-			,`introduce`
-		)
-		VALUE
-		(
-			#{name}
-			,#{yyyymmdd}
-			,#{email}
-			,#{introduce}
-		)
-	</insert>
+	<!-- DB에서 used_goods 테이블의 모든 행을 조회. 조회 결과는 각 행마다 UsedGoods 객체로 매핑되어 List로 
+		반환됩니다. -->
 </mapper>

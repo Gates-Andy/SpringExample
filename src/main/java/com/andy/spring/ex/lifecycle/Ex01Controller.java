@@ -10,20 +10,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Ex01Controller {
 
-	//1. 간단한 html을 response 담는  페이지
+	//1. HTML을 response 담는  페이지
 	@ResponseBody
 	@RequestMapping("/lifecycle/ex01/1")
 	public String htmlResponse() {
+		
 		return ""
 				+ "<html>"
-				+ "		<head><title>Sprint</title></head>\n"
+				+ "		<head><title>Spring</title></head>\n"
 				+ "		<body>"
 				+ "			<h2>Spring html response</h2>\n" 
 				+ "		</body>\n"
 				+ "</html>";
+		
 	}
 	
-	//2. 맵을 response에 담는 페이지
+	//2. Map을 response에 담는 페이지
 	@ResponseBody
 	@RequestMapping("/lifecycle/ex01/2")
 	public Map<String,Integer> mapResponse() {
@@ -35,6 +37,7 @@ public class Ex01Controller {
 		fruitMap.put("peach",3250);
 		
 		return fruitMap;
+		
 	}
 	
 }

@@ -14,14 +14,39 @@
 		,`introduce`
 		,`createdAt`
 		,`updatedAt`
-		
+
 		FROM
 		`new_user`
-		
+
 		ORDER BY
 		`id` DESC
-		
+
 		LIMIT
 		1
 	</select>
+
+	<insert id="insertUser"
+		parameterType="com.andy.spring.ex.mvc.domain.User"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+		`new_user`
+		(
+		`name`
+		, `yyyymmdd`
+		, `email`
+		, `introduce`
+		, `createdAt`
+		, `updatedAt`
+		)
+		VALUES
+		(
+		#{name}
+		, #{yyyymmdd}
+		, #{email}
+		, #{introduce}
+		, #{createdAt}
+		, #{updatedAt}
+		)
+	</insert>
+
 </mapper>
