@@ -1,6 +1,6 @@
 package com.andy.spring.ex.ajax;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -24,16 +24,23 @@ public class AjaxController {
 	
 	@ResponseBody
 	@GetMapping("/ajax/person")
-	public Map<String, Object> personInfo(@RequestParam("name")String name, @RequestParam("birthday")String bitrhday) {
+	public Map<String, Object> personInfo(
+			@RequestParam("name")String name
+			, @RequestParam("birthday")String bitrhday) 
+	{
+		
 		int year = Integer.parseInt(bitrhday.substring(0,4));
 		
 		int age = 2025 - year + 1;
 		
 		// {"name":"김인규", "age":32} json
+		
 		Map<String,Object> personMap = new HashMap<>();
 		personMap.put("name", name);
 		personMap.put("age", age);
 		
 		return personMap;
+		
 	}
+	
 }

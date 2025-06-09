@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사용자 추가</title>
+</head>
+<body>
+	<h2>사용자 추가</h2>
+
+	<label>이름</label>
+	<input type="text" id="nameInput">
+	<br>
+
+	<label>생년월일</label>
+	<input type="text" id="birthdayInput">
+	<br>
+
+	<label>이메일</label>
+	<input type="text" id="emailInput">
+	<br>
+
+	<label>자기소개</label>
+	<br>
+	<textarea rows="5" cols="50" id="introduceInput"></textarea>
+	<br>
+
+	<button type="button" id="addBtn">추가</button>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script>
+		$("#addBtn").on("click", function() {
+			let name = $("#nameInput").val().trim();
+			let birthday = $("#birthdayInput").val().trim();
+			let email = $("#emailInput").val().trim();
+			let introduce = $("#introduceInput").val().trim();
+
+			if (name === "") {
+				alert("이름을 입력하세요");
+				return;
+			}
+			if (birthday === "") {
+				alert("생년월일을 입력하세요");
+				return;
+			}
+			if (email === "") {
+				alert("이메일을 입력하세요");
+				return;
+			}
+			if (introduce === "") {
+				alert("자기소개를 입력하세요");
+				return;
+			}
+
+			alert("모든 항목이 입력되었습니다!"); // 넣어도 안넣어도 상관없음
+
+			$.ajax({
+				type : "post",
+				url : "/ajax/user/create",
+				data : {
+					"name" : name,
+					"birthday" : birthday,
+					"email" : email,
+					"introduce" : introduce
+				},
+				success : function(response) {
+					// 성공의 데이터 정보 : {"result":"success"} 
+					// 실패의 데이터 정보 : {"result":"fail"}
+					if (response.result == "success") {
+						alert("성공!!");
+					} else {
+						alert("사용자 추가 실패!");
+					}
+				},
+				error : function() {
+					alert("사용자 추가 에러!");
+				}
+			})
+		});
+	</script>
+</body>
+</html>
