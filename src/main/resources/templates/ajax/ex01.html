@@ -23,11 +23,11 @@
 		$("#inputBtn").on("click",function(){
 			let name = $("#nameInput").val();
 			let birthday  = $("#birthdayInput").val();
-			
+			// 이게 Ahax로 서버로 전송돼서, 자바컨트롤러의 @RequestParam("something")으로 전달돼
 			//alert("이름 : " + name + "생년월일 :" + birthday);
 			
-			$.ajax({
-				type:"get"  // ① HTTP 요청 방식 (GET 방식)
+			$.ajax({ // JavaScript → 서버로 데이터 전송
+				type:"get"  		  // ① HTTP 요청 방식 (GET 방식)
 				, url:"/ajax/person"  // ② 요청을 보낼 서버의 URL
 				, data:{"name":name, "birthday":birthday} // ③ 서버에 전송할 데이터 (name과 birthday 변수)
 			
