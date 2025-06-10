@@ -51,12 +51,32 @@ public class NewUserController {
 		return resultMap;
 
 	}
-	
+
 	// 입력화면 view html form 태그쓰구
 	@GetMapping("/input")
 	public String inputUser() {
-		
+
 		return "/ajax/input";
-		
+
+	}
+
+	// email을 전달받고 중복된 이메일이 있는지 알려주는 API
+	@ResponseBody
+	@GetMapping("/duplicate-email")
+	public Map<String, Boolean> isDuplicateEmail(@RequestParam("email") String email) {
+
+		Map<String, Boolean> resultMap = new HashMap<>();
+		// 중복됨 : {"isDuplicate":true}
+		// 중복안됨 :{"isDuplicate":false}
+
+		if (userService.isDuplicateEmail(email)) {
+			// 중복됨
+			resultMap.put("isDuplicate", true);
+		} else {
+			// 중복 안됨
+			resultMap.put("isDuplicate", false);
+
+		}
+		return resultMap;
 	}
 }

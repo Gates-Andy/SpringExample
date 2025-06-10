@@ -32,7 +32,8 @@
 		`new_user`
 		(
 		`name`
-		, `yyyymmdd`
+		,
+		`yyyymmdd`
 		, `email`
 		, `introduce`
 		, `createdAt`
@@ -45,8 +46,19 @@
 		, #{email}
 		, #{introduce}
 		, #{createdAt}
-		, #{updatedAt}
+		,
+		#{updatedAt}
 		)
 	</insert>
-
+	
+	<!-- ajax -->
+	<select id="selectCountByEmail" parameterType="int">
+		SELECT
+		count(*)
+		FROM
+		`new_user`
+		WHERE
+		`email` = #{email}
+	
+	</select>
 </mapper>
