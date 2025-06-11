@@ -3,62 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <title>사용자 추가</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<h2>사용자 추가</h2>
+	<div class="container">
+		<label>이름</label> <input type="text" class="form-control col-3" id="nameInput"> <br>
 
-	<label>이름</label>
-	<input type="text" id="nameInput">
-	<br>
+		<label>생년월일</label> <input type="text" class="form-control col-3" id="birthdayInput"> <br>
 
-	<label>생년월일</label>
-	<input type="text" id="birthdayInput">
-	<br>
+		<label>이메일</label> <input type="text" class="form-control col-3" id="emailInput">
 
-	<label>이메일</label>
-	<input type="text" id="emailInput">
-	<button type="button" id="duplicateBtn">이메일 확인</button>
-	<br>
+		<button type="button" class="form-control col-3 btn btn-primary mt-1" id="duplicateBtn">이메일 확인</button> <br> 
+		<label>자기소개</label> <br>
+		<textarea rows="5" cols="50" id="introduceInput"></textarea>
+		<br>
 
-	<label>자기소개</label>
-	<br>
-	<textarea rows="5" cols="50" id="introduceInput"></textarea>
-	<br>
-
-	<button type="button" id="addBtn">추가</button>
+		<button type="button" class="btn btn-primary mt-1" id="addBtn">추가</button>
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 	<script>
-	
-		$("#duplicateBtn").on("click", function(){
+		$("#duplicateBtn").on("click", function() {
 			let email = $("#emailInput").val();
-			alert(email);
-			if(email == ""){
+
+			if (email == "") {
 				alert("email을 입력하세요");
 				return;
 			}
-		})
-		
-		$.ajax({
-			type:"get"
-			,url:"/ajax/user/duplicate-email"
-			,data:{"email":email}
-			,success:function(response){
-				if(response.isDuplicate){
-				// 중복됨 : {"isDuplicate":true}
-				alert("중복된 이메일 입니다.");
-				} else{
-				// 중복안됨 :{"isDuplicate":false}
-				alert("사용가능한 이메일 입니다.");
+
+			$.ajax({
+				type : "get",
+				url : "/ajax/user/duplicate-email",
+				data : {
+					"email" : email
+				},
+				success : function(response) {
+					if (response.isDuplicate) {
+						// 중복됨 : {"isDuplicate":true}
+						alert("중복된 이메일 입니다.");
+					} else {
+						// 중복안됨 :{"isDuplicate":false}
+						alert("사용가능한 이메일 입니다.");
+					}
+				},
+				error : function() {
+					alert("중복확인 에러!");
 				}
-			}
-			,error:function(){
-				alert("중복확인 에러!");
-			}
+			});
 		});
-				
-		
+
 		$("#addBtn").on("click", function() {
 			let name = $("#nameInput").val().trim();
 			let birthday = $("#birthdayInput").val().trim();

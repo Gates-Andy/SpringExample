@@ -78,5 +78,7 @@ public class NewUserController {
 
 		}
 		return resultMap;
+		
 	}
+	
 }

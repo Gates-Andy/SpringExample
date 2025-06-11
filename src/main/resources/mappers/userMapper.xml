@@ -54,7 +54,8 @@
 	<!-- ajax -->
 	<select id="selectCountByEmail" parameterType="int">
 		SELECT
-		count(*)
+		count
+		(*)
 		FROM
 		`new_user`
 		WHERE
