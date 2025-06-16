@@ -1,6 +1,6 @@
 package com.andy.spring.ex.jpa.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository; 
 
 import com.andy.spring.ex.jpa.domain.Student;
 

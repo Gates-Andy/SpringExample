@@ -1,6 +1,6 @@
 package com.andy.spring.ex.jpa.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime; 
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,7 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Builder
+@Builder(toBuilder=true) // 실체객체를 수정하는게 아니라 새롭게 만들어 리턴
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter

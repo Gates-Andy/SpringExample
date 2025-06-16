@@ -12,18 +12,9 @@ import com.andy.spring.ex.jpa.service.StudentService;
 @Controller
 @RequestMapping("/jpa")
 public class StudentController {
+
 	@Autowired
 	private StudentService studentService;
-
-	// 1. 저장 기능
-	@GetMapping("/student")
-	public Student createStudent() {
-		// 김인규, 010-1234-5678, abc@naver.com. 개발자
-		Student student = studentService.addStudent("김인규", "010-1234-5678", "abc@naver.com", "개발자");
-		return student;
-	}
-	
-	// 2. 수정 시능
 
 	@ResponseBody
 	@GetMapping("/lombok")
@@ -47,5 +38,44 @@ public class StudentController {
 		return student;
 
 	}
+
+	// 1. 저장 기능
+	@ResponseBody
+	@GetMapping("/student")
+	public Student createStudent() {
+
+		// 김인규, 010-1234-5678, abc@naver.com. 개발자
+
+		Student student = studentService.addStudent("김인규", "010-1234-5678", "abc@naver.com", "개발자");
+
+		return student;
+
+	}
+
+	// 2. 수정 기능
+	@ResponseBody
+	@GetMapping("/update")
+	public Student updateStudent() {
+		
+		// id 가 3 인 학생 장래희망을 강사로 변경
+		
+		Student student = studentService.updateStudent(3, "강사");
+
+		return student;
+	}
+
+	// 3. 삭제 기능
+	@ResponseBody
+	@GetMapping("/delete")
+	public String deleteStudent() {
+		
+		studentService.deleteStudent(3);
+		
+		return "삭제 성공";
+		
+	}
+	
+	// 4. 조회기능 **원래는 컨트롤러에서 레파지토리 객체 사용 불가 !!!!!!!!!!! 예제 진행 편의를 위해서 추가하는 것
+	public 
 
 }
