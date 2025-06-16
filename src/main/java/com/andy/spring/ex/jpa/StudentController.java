@@ -29,8 +29,12 @@ public class StudentController {
 //		Student student = new Student(3, "andy", "010-1234-2345", "123@naver.com", "프로그래머", LocalDateTime.now(),LocalDateTime.now());
 //		student.setDreamJob("강사");
 
-		// 2. builder 패턴 엔티티클래스에 @Build 어노테이션
-		Student student = Student.builder().name("유재석").dreamJob("개그맨").phoneNumber("010-1111-2222").build();
+		// 2. builder 패턴 엔티티클래스에 @Build 어노테이션 순서도 상관없고 요즘 방식
+		Student student = Student.builder()
+				.name("유재석")
+				.dreamJob("개그맨")
+				.phoneNumber("010-1111-2222")
+				.build();
 //		{
 //			  "id": 0,
 //			  "name": "유재석",
@@ -47,10 +51,10 @@ public class StudentController {
 
 	// 1. 저장 기능
 	@ResponseBody
-	@GetMapping("/student")
+	@GetMapping("/create")
 	public Student createStudent() {
 
-		// 김인규, 010-1234-5678, abc@naver.com. 개발자. service 의 add build 객체 생성 방식에 파라미터만 넣어 
+		// 김인규, 010-1234-5678, abc@naver.com. 개발자. service 의 add build 객체 생성 방식에 파라미터만 넣어
 
 		Student student = studentService.addStudent("김인규", "010-1234-5678", "abc@naver.com", "개발자");
 
