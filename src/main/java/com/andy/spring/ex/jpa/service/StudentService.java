@@ -62,10 +62,17 @@ public class StudentService {
 	    Optional<Student> optionalStudent = studentRepository.findById(id);
 
 	    if (optionalStudent.isPresent()) {
+	    	
 	        Student student = optionalStudent.get();
+	        
 	        studentRepository.delete(student);
+	        
 	    } else {
+	    	
 	        System.out.println("삭제할 학생이 존재하지 않습니다. id=" + id);
+	        
 	    }
+	    
 	}
+	
 }
