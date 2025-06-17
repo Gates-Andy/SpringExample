@@ -1,5 +1,6 @@
 package com.andy.spring.ex.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class StudentController {
 		
 		// id 가 3 인 학생 장래희망을 강사로 변경
 		
-		Student student = studentService.updateStudent(3, "강사");
+		Student student = studentService.updateStudent(7, "강사");
 
 		return student;
 	}
@@ -91,9 +92,22 @@ public class StudentController {
 	public List<Student> findStudent() {
 		List<Student> studentList = null;
 		
-//		studentList = studentRepository.findAll();
-//		studentList = studentRepository.findAllByOrderByIdDesc();
-//		studentList = studentRepository.findTop2ByOrderByIdDesc();
+//1		studentList = studentRepository.findAll();
+		
+//2		studentList = studentRepository.findAllByOrderByIdDesc();
+		
+//3		studentList = studentRepository.findTop2ByOrderByIdDesc();
+		
+//4		studentList = studentRepository.findByName("김인규");
+		
+//5		List<String> nameList = new ArrayList<>();
+//		nameList.add("유재석");
+//		nameList.add("김인규");
+//		studentList = studentRepository.findByNameIn(nameList);
+	
+//6		studentList = studentRepository.findByEmailContaining("mrjo");
+		
+		studentList = studentRepository.selectByQuery("강사");
 		
 		return studentList;
 	}

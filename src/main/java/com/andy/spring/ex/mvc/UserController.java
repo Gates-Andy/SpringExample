@@ -70,5 +70,5 @@ public class UserController {
 		return "mvc/userInput";
 		
 	}
-	
+
 }

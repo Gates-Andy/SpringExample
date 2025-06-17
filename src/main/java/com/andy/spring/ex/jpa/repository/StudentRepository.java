@@ -1,8 +1,10 @@
 package com.andy.spring.ex.jpa.repository;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.andy.spring.ex.jpa.domain.Student;
 
@@ -14,5 +16,22 @@ public interface StudentRepository extends JpaRepository<Student,Integer>{
 	// id 기반으로 내림차순 2개만 조회
 	// ORDER BY `id` DESC LIMIT @
 	public List<Student> findTop2ByOrderByIdDesc();
-
+	
+	// 전달 받은 이름과 일치하는 행 조회
+	// WHERE `name` = `#{mybatis 방식}`;
+	public List<Student> findByName(String name);
+	
+	// 전달 받은 이름들과 일치하는 행 조회
+	// WHERE `name` IN(#{},#{})
+	public List<Student> findByNameIn(List<String> nameList);
+	
+	// 전달 바닫은 키워드가 포함된 email 컬럼을 가진 행 조회
+	// WHERE `email` LIKE `%#{}%`
+	public List<Student> findByEmailContaining(String email);
+	
+	// 쿼리 직접 작성
+	// dreamJob 이 전달받은 값과 일치하는 행 조회 import org.springframework.data.repository.query.Param;
+	@Query(value="SELECT * FROM `new_student` WHERE `dreamJob` = :dreamJob", nativeQuery=true)
+	public List<Student> selectByQuery(@Param("dreamJob") String dreamJob);
+	
 }

@@ -15,6 +15,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 // JPA / Hibernate 관련 어노테이션 Lombok 관련 어노테이션
 @Builder(toBuilder=true) // Builder 패턴을 사용할 수 있게 합니다. toBuilder=true를 설정하면 기존 객체에서 새로운 객체를 수정한 버전으로 복사할 수 있습니다.실체객체를 수정하는게 아니라 새롭게 만들어 리턴 
 @NoArgsConstructor // 기본 생성자 (매개변수 없는 생성자)를 자동 생성합니다.
