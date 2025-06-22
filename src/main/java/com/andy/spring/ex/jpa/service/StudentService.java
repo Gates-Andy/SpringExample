@@ -32,8 +32,7 @@ public class StudentService {
 		// 수정된 객체를 저장
 
 		// 자바 기능 Optional null일 수도 있는 객체를 감싸 놓은 래퍼 클레스 null처리에 필요한 기능을 포함
-		// NullPointerException 위험을 줄이기 null일 수도 있는 객체를 return 하는 메소드에서 return type 으로
-		// 활용
+		// NullPointerException 위험을 줄이기 null일 수도 있는 객체를 return 하는 메소드에서 return type 으로 활용
 
 		Optional<Student> optionalStudent = studentRepository.findById(id); // null을 가끔 리턴하는데 메서드 만드는쪽에서 처리과정을 감싼다
 		// Optional<Student>는 "Student일 수도 있고 아닐 수도 있는" 값을 감싸는 객체입니다.
